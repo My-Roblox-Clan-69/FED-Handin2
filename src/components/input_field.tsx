@@ -6,6 +6,7 @@ interface InputFieldProps {
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	placeholder?: string;
+	name?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -14,11 +15,12 @@ const InputField: React.FC<InputFieldProps> = ({
 	value,
 	onChange,
 	placeholder,
+	name,
 }) => {
 	return (
-		<div className="mb-4">
+		<div className="mb-3">
 			<label
-				className="block text-gray-700 text-sm font-bold mb-2"
+				className="block text-gray-700 text-sm font-bold mb-1"
 				htmlFor={label}
 			>
 				{label}
@@ -26,10 +28,11 @@ const InputField: React.FC<InputFieldProps> = ({
 			<input
 				type={type}
 				id={label}
+				name={name}
 				value={value}
 				onChange={onChange}
 				placeholder={placeholder}
-				className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+				className="shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 			/>
 		</div>
 	);
