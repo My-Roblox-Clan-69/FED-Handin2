@@ -1,3 +1,4 @@
+import { BASE_URL } from "../config";
 import type { Job } from "./types/job";
 
 export const fetchJobs = async (): Promise<Job[]> => {
@@ -7,7 +8,7 @@ export const fetchJobs = async (): Promise<Job[]> => {
 			throw new Error("No authentication token found. Please log in.");
 		}
 
-		const url = "https://localhost:8081/api/Jobs";
+		const url = `${BASE_URL}/api/Jobs`;
 
 		const response = await fetch(url, {
 			method: "GET",

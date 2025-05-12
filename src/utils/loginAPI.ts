@@ -1,9 +1,11 @@
+import { BASE_URL } from "../config";
+
 export const login = async (
 	email: string,
 	password: string
 ): Promise<string> => {
 	try {
-		const url = "https://localhost:8081/api/Account/login";
+		const url = `${BASE_URL}/api/Account/login`;
 
 		const response = await fetch(url, {
 			method: "POST",
