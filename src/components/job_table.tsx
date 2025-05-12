@@ -40,7 +40,7 @@ const JobsTable: React.FC = () => {
 				<p className="text-gray-600 text-center">No jobs available.</p>
 			) : (
 				<div className="overflow-x-auto">
-					<div className="grid grid-cols-[100px_150px_200px_100px_200px_200px_200px] gap-4 bg-gray-200 p-4 rounded-t-lg font-bold text-gray-800">
+					<div className="grid grid-cols-[100px_150px_200px_100px_200px_400px_200px] gap-4 bg-gray-200 p-4 rounded-t-lg font-bold text-gray-800">
 						<div>Job ID</div>
 						<div>Customer</div>
 						<div>Start Date</div>
@@ -52,7 +52,7 @@ const JobsTable: React.FC = () => {
 					{jobs.map((job) => (
 						<div
 							key={job.jobId}
-							className="grid grid-cols-[100px_150px_200px_100px_200px_200px_200px] gap-4 p-4 border-b border-gray-200"
+							className="grid grid-cols-[100px_150px_200px_100px_200px_400px_200px] gap-4 p-4 border-b border-gray-200"
 						>
 							<div>{job.jobId}</div>
 							<div>{job.customer}</div>
