@@ -7,6 +7,8 @@ import { useAuth } from "./context/AuthContext";
 function App() {
 	const { token, user } = useAuth();
 
+	const isManager = user?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "Manager";
+
 	return (
 		<div className="w-full h-screen overflow-hidden">
 			<Routes>
@@ -14,17 +16,17 @@ function App() {
 					path="/" 
 					element={
 						token 
-							? <Navigate to={user?.isManager ? "/manager" : "/model"} /> 
+							? <Navigate to={isManager ? "/manager" : "/model"} /> 
 							: <LoginPage />
 					} 
 				/>
 				<Route
 					path="/manager"
-					element={token && user?.isManager ? <ManagerDashboard /> : <Navigate to="/" />}
+					element={token && isManager ? <ManagerDashboard /> : <Navigate to="/" />}
 				/>
 				<Route
 					path="/model"
-					element={token && !user?.isManager ? <ModelDashboard /> : <Navigate to="/" />}
+					element={token && !isManager ? <ModelDashboard /> : <Navigate to="/" />}
 				/>
 			</Routes>
 		</div>

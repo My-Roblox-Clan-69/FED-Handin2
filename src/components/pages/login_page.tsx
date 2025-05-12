@@ -4,11 +4,7 @@ import InputField from "../input_field";
 import { login } from "../../utils/loginAPI";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../../context/AuthContext";
-
-interface JwtPayload {
-	isManager: boolean;
-	modelId?: number;
-}
+import type { JwtPayload } from "../../utils/jwt";
 
 const LoginPage: React.FC = () => {
 	const [email, setEmail] = useState("");
@@ -23,10 +19,15 @@ const LoginPage: React.FC = () => {
 
 		try {
 			const token = await login(email, password);
-			authLogin(token);
-
 			const payload = jwtDecode<JwtPayload>(token);
-			if (payload.isManager) {
+			
+			// Log the payload to help debug
+			console.log("Login payload:", payload);
+			
+			authLogin(token);
+			
+			// Navigate based on role
+			if (payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "Manager") {
 				navigate("/manager");
 			} else {
 				navigate("/model");

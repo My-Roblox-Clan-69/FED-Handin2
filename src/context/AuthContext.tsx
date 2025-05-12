@@ -16,9 +16,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<JwtPayload | null>(token ? decodeToken(token) : null);
 
   const login = (newToken: string) => {
+    console.log("New token received:", newToken);
+    const decodedUser = decodeToken(newToken);
+    console.log("Decoded user:", decodedUser);
+    
     localStorage.setItem("token", newToken);
     setToken(newToken);
-    setUser(decodeToken(newToken));
+    setUser(decodedUser);
   };
 
   const logout = () => {
