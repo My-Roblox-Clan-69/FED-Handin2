@@ -3,7 +3,7 @@ export const login = async (
 	password: string
 ): Promise<string> => {
 	try {
-		const url = "https://localhost:8081/api/Account/login";
+		const url = "http://localhost:8080/api/Account/login";
 
 		const response = await fetch(url, {
 			method: "POST",
