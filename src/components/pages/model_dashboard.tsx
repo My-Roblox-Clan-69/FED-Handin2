@@ -1,5 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import JobsTable from "../job_table";
 
 export default function ModelDashboard() {
 	const { logout } = useAuth();
@@ -11,7 +12,7 @@ export default function ModelDashboard() {
 	};
 
 	return (
-		<div className="p-4">
+		<div className="w-full h-screen overflow-hidden p-4 bg-gray-100 flex flex-col">
 			<div className="flex justify-between items-center mb-4">
 				<h1 className="text-2xl font-bold">Welcome Model</h1>
 				<button
@@ -20,6 +21,9 @@ export default function ModelDashboard() {
 				>
 					Logout
 				</button>
+			</div>
+			<div className="flex-1 overflow-y-auto">
+				<JobsTable />
 			</div>
 		</div>
 	);
